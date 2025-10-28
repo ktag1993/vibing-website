@@ -1,0 +1,23 @@
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+.cache/
+
+# Environment variables (if any in future)
+.env
+.env.local
+.env.*.local
+
