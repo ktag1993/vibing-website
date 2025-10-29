@@ -38,13 +38,15 @@ jobs:
             --exclude ".github/*" \
             --exclude "*.md" \
             --exclude "README.md" \
-            --cache-control "public, max-age=3600"
+            --cache-control "public, max-age=300"
           
-          # Set longer cache for static assets
-          aws s3 cp s3://$S3_BUCKET/assets/ s3://$S3_BUCKET/assets/ \
-            --recursive \
-            --cache-control "public, max-age=31536000, immutable" \
-            --metadata-directive REPLACE
+          # Set longer cache only for images (immutable assets)
+          if aws s3 ls s3://$S3_BUCKET/assets/images/ 2>/dev/null; then
+            aws s3 cp s3://$S3_BUCKET/assets/images/ s3://$S3_BUCKET/assets/images/ \
+              --recursive \
+              --cache-control "public, max-age=31536000, immutable" \
+              --metadata-directive REPLACE
+          fi
           
           echo "✅ Files synced successfully"
       
