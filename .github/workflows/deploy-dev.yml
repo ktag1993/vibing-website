@@ -30,8 +30,7 @@ jobs:
         run: |
           echo "📦 Syncing website files to S3..."
           
-          # TODO: Replace with actual S3 bucket name for Vibing dev website
-          S3_BUCKET="vibing-website-dev"
+          S3_BUCKET="dev-vibing-frontend-ak28xoo3"
           
           aws s3 sync . s3://$S3_BUCKET/ \
             --delete \
@@ -53,8 +52,7 @@ jobs:
         run: |
           echo "🔄 Invalidating CloudFront cache..."
           
-          # TODO: Replace with actual CloudFront distribution ID for Vibing dev website
-          DISTRIBUTION_ID="REPLACE_WITH_DEV_DISTRIBUTION_ID"
+          DISTRIBUTION_ID="EML6FTN4XPNEY"
           
           aws cloudfront create-invalidation \
             --distribution-id $DISTRIBUTION_ID \
